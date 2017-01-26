@@ -1,16 +1,18 @@
 # PCfB-Project
 Colour maps showing genetic diversity of seagrass
 
-
 # Reading in Sampling data
+
+```
 setwd("C:/Users/Aoife/Desktop/MB Masters ~ 2/Bioinformatics/project")
 d <- read.table("pcfbproject2017.txt", header = TRUE)
-
+```
 
 #=======================================#
 # Plot data on google earth with ggmap
 #=======================================#
 
+```
 install.packages("mapplots")
 install.packages("marmap")
 install.packages("maps")
@@ -66,7 +68,7 @@ map('worldHires', add=TRUE, fill=TRUE, col='white', boundary='black', lwd = 2)
 colours <- c("paleturquoise","darkslategray3","darkkhaki","thistle")
 colours1 <- colours[d$Na]
 points(d$Long, d$Lat, cex=(d$Na), pch=21, bg=colours1)
-
+```
 
 
 
