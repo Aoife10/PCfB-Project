@@ -2,6 +2,15 @@ language:python
 python:
   - "2.7"
 install: true
+env:
+  - PEP=true
+  - PEP=false
+matrix:
+  allow_failures:
+    - env: PEP=true
+script:
+  - if $PEP ; then pep8 ; fi
+  - python -m GeneticMap
 script: 
   - ./GeneticMap.py
 
