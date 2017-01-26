@@ -1,21 +1,40 @@
 #! /usr/bin/env python
 
+#This script will make a subset of a complete data set according to what the user would like to use
+
+#Make a dictionary to transform the names of the columns (user input) into column names
 Trans={
-'Na14':2,
-'Ho14':3}
+'NInd':2,
+'R14':3,
+'Na14':4,
+'A20':5,
+'Ho14':6}
 
-a = raw_input("Enter the desired data: ")
+#Give the user a choice of possible data and its associated code
+print "Make a map of: "
+print ""
+print "Number of individuals: NoInd"
+print "Genotypic Richness (N=14): R14"
+print "Number Of Alleles Per Locus(N=14): Na14"
+print "AllelicRichness(MLG=20): A20"
+print "Observed Heterozygozity (N=14): Ho14"
 
-# Set the input file name
-InFileName = 'try1.txt' #alias to make it easier
+# Set the input file name of the complete data set
+InFileName = 'CompleteData.txt' #alias to make it easier
 
-# Derive the output file name from the input file name
+# Make an output file
 OutFileName = "newdata.txt"
 
 # Open the input file, InFileName, and specify the mode, read
 InFile = open(InFileName, 'r')
 OutFile = open(OutFileName, 'w') 	# Open the output file, and set the mode to 'write'
 
+#ask the user to input the code of the desired data
+a = raw_input("Enter the code of the desired data: ")
+
+#output "error" if the user did not enter a correct code. 
+#In this case the user will have to restart the program
+#If the code is correct, tranlate code to the column number
 if a in Trans:
 	a = Trans[a]
 else:
@@ -25,14 +44,9 @@ else:
 for Line in InFile:
 	Line = Line.strip('\n') #overwrite Line without enter
 	# Split the line into a list of ElementList, using tab as a delimiter
-	ElementList = Line.split('\t') #6........
-	
-	# Returns a list and changes the order of the elements so that it will be changed to this format:
-	Long    = ElementList[0] 
-	Lat    = ElementList[1]
-	Na14   = ElementList[2]  # A string, not a number
-	Ho14   = ElementList[3]
+	ElementList = Line.split('\t') 
 
+	#write a new subset of the data to the new output file according to the desired data (called a)
 	OutFile.write(ElementList[0])
 	OutFile.write("\t")
 	OutFile.write(ElementList[1])
@@ -40,7 +54,6 @@ for Line in InFile:
 	OutFile.write(ElementList[a])
 	OutFile.write("\n")
 
-	
 # Close the files
 InFile.close()
 OutFile.close()
