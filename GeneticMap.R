@@ -20,7 +20,6 @@ leg <- colnames(data)[3]
 # getting the map and storing it in mapMed
 
 #Use longitude and latitude to make a map of the mediterranean area
-#mapMed <- get_map(location = c(-10, 25, 48, 42), zoom = 4,
 mapMed <- get_map(location = c(Long = mean(data$Long), Lat = mean(data$Lat)), zoom = 4,
                       maptype = "satellite", scale = 2)
 
