@@ -29,17 +29,23 @@ OutFileName = "newdata.txt"
 InFile = open(InFileName, 'r')
 OutFile = open(OutFileName, 'w') 	# Open the output file, and set the mode to 'write'
 
-#ask the user to input the code of the desired data
-a = raw_input("Enter the code of the desired data: ")
 
+
+#ask the user to input the code of the desired data
 #output "error" if the user did not enter a correct code. 
 #In this case the user will have to restart the program
 #If the code is correct, tranlate code to the column number
-if a in Trans:
-	a = Trans[a]
-else:
-	print("error")
+def getCol():
+	d = raw_input("Enter the desired data: ")
+	if d in Trans:
+		n = Trans[d]
+		return n
+	else:
+		print "error"
+		return getCol()
 
+a = getCol()	
+	
 # Loop over each line in the file
 for Line in InFile:
 	Line = Line.strip('\n') #overwrite Line without enter
