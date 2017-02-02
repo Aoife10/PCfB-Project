@@ -33,7 +33,7 @@ OutFile = open(OutFileName, 'w') 	# Open the output file, and set the mode to 'w
 
 #ask the user to input the code of the desired data
 #output "error" if the user did not enter a correct code. 
-#In this case the user will have to restart the program
+#In this case the user will have to reenter a new code
 #If the code is correct, tranlate code to the column number
 def getCol():
 	d = raw_input("Enter the desired data: ")
